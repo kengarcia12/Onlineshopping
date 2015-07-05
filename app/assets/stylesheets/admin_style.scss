@@ -1,0 +1,41 @@
+.admin_form_width {
+  border: solid 1px gray;
+  width: 50%;
+  height: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  float: none;
+  margin-left: auto;
+  margin-right: auto
+}
+
+p.border_bottom{
+  border: solid 1px lightgray;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.caption_style{
+  border: solid 1px lightgray;
+  padding: 5px;
+  border-bottom: none;
+}
+.active_style {
+  color: green;
+  font-weight: bold;
+}
+.inactive_style {
+  color: red;
+  font-weight: bold;
+}
+
+img.set_style{
+  max-height: 150px;
+  height: 100%;
+}
+img.show_set_style{
+  max-height: 150px;
+  height: 100%;
+  max-width: 150px;
+  width: 100%;
+}

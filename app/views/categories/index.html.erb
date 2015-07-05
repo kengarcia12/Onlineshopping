@@ -6,30 +6,36 @@
   <h1>Listing categories</h1>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-            <th>Category name</th>
-            <th>Description</th>
-            <th>Picture</th>
-            <th>Status</th>
-            <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+<div class="row">
+  <%= content_tag_for(:p, @categories) do |category| %>
+  <div class="col-sm-6 col-md-3 thumb_style">
+        <div class="caption caption_style">
+          <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
+          <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
+          <% if category.status == "1" %>
+              <p> <b>Status:</b> <span class="active_style">Active</span></p>
+          <% else %>
+              <p> <b> Status:</b> <span class="inactive_style">Inactive</span></p>
+          <% end %>
 
-    <tbody>
-      <%= content_tag_for(:tr, @categories) do |category| %>
-            <td><%= category.category_name %></td>
-            <td><%= category.description %></td>
-            <td><%= image_tag category.picture, :class => "img-responsive category_img_style" %></td>
-            <td><%= category.status %></td>
-            <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
+        </div>
+        <div class="thumbnail">
+          <%= image_tag category.picture, :class => "img-responsive set_style"  %>
+        </div>
+        <div class="caption">
+          <p>
+            <button class="btn btn-default"><%= link_to 'Show', category %></button>
+            <button class="btn btn-default"><%= link_to 'Edit', edit_category_path(category) %></button>
+            <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          </p>
+        </div>
+  </div>
+  <% end %>
 </div>
+
+
+
+
+
+
+
