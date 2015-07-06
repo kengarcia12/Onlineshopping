@@ -8,8 +8,9 @@
 
 <div class="row">
   <%= content_tag_for(:p, @categories) do |category| %>
-  <div class="col-sm-6 col-md-3 thumb_style">
-        <div class="caption caption_style">
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+        <div class="caption">
           <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
           <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
           <% if category.status == "1" %>
@@ -19,8 +20,8 @@
           <% end %>
 
         </div>
-        <div class="thumbnail">
-          <%= image_tag category.picture, :class => "img-responsive set_style"  %>
+        <div class="image_container">
+          <%= image_tag category.picture, :class => "img-responsive", :class=> "image_height"  %>
         </div>
         <div class="caption">
           <p>
@@ -29,6 +30,7 @@
             <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></button>
           </p>
         </div>
+    </div>
   </div>
   <% end %>
 </div>
