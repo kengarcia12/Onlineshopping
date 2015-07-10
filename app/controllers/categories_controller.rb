@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @categories_active = Category.where("status = 1")
+    @categories_inactive = Category.where("status = 0")
     respond_with(@categories)
   end
 
@@ -25,12 +27,12 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.save
-    respond_with(@category)
+    redirect_to categories_path
   end
 
   def update
     @category.update(category_params)
-    respond_with(@category)
+    redirect_to categories_path
   end
 
   def destroy

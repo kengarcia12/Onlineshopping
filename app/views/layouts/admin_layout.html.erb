@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Online Shopping", "#", class: "navbar-brand" %>
+      <%= link_to "Online Shopping", root_path, class: "navbar-brand" %>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -35,7 +35,7 @@
           <a href="<%= products_path %> ">Products</a></li>
         <li class="menu_link <%= "active " if current_page?(categories_path) %>">
           <a href="<%= categories_path %> ">Categories</a></li>
-        <li><a href="#contact">Contact</a></li>
+
       </ul>
       <ul class="nav navbar-nav pull-right">
         <% if admin_signed_in? %>

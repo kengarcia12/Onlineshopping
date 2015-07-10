@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'about_us/index'
+
+  devise_for :users
   resources :categories
 
   resources :products

@@ -1,43 +1,113 @@
 <div class="page-header">
   <%= link_to new_category_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Category
+      <span class="glyphicon glyphicon-plus"></span>
+      New Category
   <% end %>
-  <%= link_to new_category_path, class: 'btn btn-danger' do %>
-      <span class="glyphicon glyphicon-chevron-down"></span>
-      Inactive Category
-  <% end %>
+
 
   <h1>Listing categories</h1>
 </div>
 
 <div class="row">
-  <%= content_tag_for(:p, @categories) do |category| %>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-        <div class="caption">
-          <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
-          <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
-          <% if category.status == "1" %>
-              <p> <b>Status:</b> <span class="active_style">Active</span></p>
-          <% else %>
-              <p> <b> Status:</b> <span class="inactive_style">Inactive</span></p>
-          <% end %>
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">All Categories</a></li>
+      <li><a data-toggle="tab" href="#menu1">Active Categories</a></li>
+      <li><a data-toggle="tab" href="#menu2">Inactive Categories</a></li>
+    </ul>
+  </div>
+  <div class="tab-content ">
+    <div id="home" class="tab-pane fade in active ">
+      <%= content_tag_for(:p, @categories) do |category| %>
 
-        </div>
-        <div class="image_container">
-          <%= image_tag category.picture, :class => "img-responsive", :class=> "image_height"  %>
-        </div>
-        <div class="caption">
-          <p>
-            <button class="btn btn-default"><%= link_to 'Show', category %></button>
-            <button class="btn btn-default"><%= link_to 'Edit', edit_category_path(category) %></button>
-            <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-          </p>
-        </div>
+          <div class="col-sm-6 col-md-3 "><br/>
+            <div class="thumbnail">
+              <div class="caption">
+                <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
+
+                <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
+                <% if category.status == "1" %>
+                    <p><b>Status:</b> <span class="active_style">Active</span></p>
+                <% else %>
+                    <p><b> Status:</b> <span class="inactive_style">Inactive</span></p>
+                <% end %>
+
+              </div>
+              <div class="image_container">
+                <%= image_tag category.picture, :class => "img-responsive", :class => "image_height" %>
+              </div>
+              <div class="caption">
+                <p>
+                  <button class="btn btn-default"><%= link_to 'Show', category %></button>
+                  <button class="btn btn-default"><%= link_to 'Edit', edit_category_path(category) %></button>
+                  <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'} %></button>
+                </p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <%= content_tag_for(:p, @categories_active) do |category| %>
+          <div class="col-sm-6 col-md-3"><br/>
+            <div class="thumbnail">
+              <div class="caption">
+                <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
+
+                <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
+                <% if category.status == "1" %>
+                    <p><b>Status:</b> <span class="active_style">Active</span></p>
+                <% else %>
+                    <p><b> Status:</b> <span class="inactive_style">Inactive</span></p>
+                <% end %>
+
+              </div>
+              <div class="image_container">
+                <%= image_tag category.picture, :class => "img-responsive", :class => "image_height" %>
+              </div>
+              <div class="caption">
+                <p>
+                  <button class="btn btn-default"><%= link_to 'Show', category %></button>
+                  <button class="btn btn-default"><%= link_to 'Edit', edit_category_path(category) %></button>
+                  <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'} %></button>
+                </p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <%= content_tag_for(:p, @categories_inactive) do |category| %>
+          <div class="col-sm-6 col-md-3"><br/>
+            <div class="thumbnail">
+              <div class="caption">
+                <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
+
+                <p class="border_bottom"><b>Description:</b> <%= category.description %></p>
+                <% if category.status == "1" %>
+                    <p><b>Status:</b> <span class="active_style">Active</span></p>
+                <% else %>
+                    <p><b> Status:</b> <span class="inactive_style">Inactive</span></p>
+                <% end %>
+
+              </div>
+              <div class="image_container">
+                <%= image_tag category.picture, :class => "img-responsive", :class => "image_height" %>
+              </div>
+              <div class="caption">
+                <p>
+                  <button class="btn btn-default"><%= link_to 'Show', category %></button>
+                  <button class="btn btn-default"><%= link_to 'Edit', edit_category_path(category) %></button>
+                  <button class="btn btn-default"><%= link_to 'Destroy', category, method: :delete, data: {confirm: 'Are you sure?'} %></button>
+                </p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
     </div>
   </div>
-  <% end %>
 </div>
 
 
