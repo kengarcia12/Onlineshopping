@@ -5,6 +5,15 @@
       New Product
   <% end %>
   <h1>Listing products</h1>
+  <% if @products.present? %>
+      <% @products %>
+  <% else %>
+      <p>There are no products containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+      <%= submit_tag "Search" %>
+  <% end %>
 </div>
 
 <div class="row">
