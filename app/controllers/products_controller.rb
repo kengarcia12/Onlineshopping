@@ -43,6 +43,25 @@ class ProductsController < ApplicationController
     respond_with(@product)
   end
 
+  def upvote
+    @product = Product.find(params[:id])
+
+    if @product.votes.create(user_id: current_user.id)
+      flash[:notice] =  "Thank you for upvoting!"
+      redirect_to(root_path)
+    else
+      flash[:notice] =  "You have already upvoted this!"
+      redirect_to(root_path)
+    end
+  end
+
+  def downvote
+    @product = Product.find(params[:id])
+    @product.votes.last.destroy
+    redirect_to(root_path)
+  end
+
+
   private
     def set_product
       @product = Product.find(params[:id])

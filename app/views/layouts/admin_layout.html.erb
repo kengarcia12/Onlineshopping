@@ -35,6 +35,9 @@
           <a href="<%= products_path %> ">Products</a></li>
         <li class="menu_link <%= "active " if current_page?(categories_path) %>">
           <a href="<%= categories_path %> ">Categories</a></li>
+        <li class="menu_link <%= "#" if admin_signed_in? %>">
+          <a href="#"><%=  current_admin.email %></a>
+        </li>
 
       </ul>
       <ul class="nav navbar-nav pull-right">

@@ -40,6 +40,9 @@
         <li class="menu_link <%= "active" if current_page?(about_us_index_path) %>">
           <a href="<%= about_us_index_path %>">About Us</a>
         </li>
+        <li class="menu_link <%= "#" if user_signed_in? %>">
+          <a href="#"><%=  current_user.email %></a>
+        </li>
 
 
       </ul>

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
 
-  resources :products
+  resources :products do
+    member do
+      post 'upvote'
+      post 'downvote'
+    end
+  end
 
   devise_for :admins
   root to: 'home#index'

@@ -13,7 +13,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    respond_with(@category)
+    @categories = Category.find(params[:id])
+    @products = @categories.products
   end
 
   def new
