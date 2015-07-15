@@ -12,5 +12,9 @@ class HomeController < ApplicationController
   def category_products
     @products = Product.all.where(:category_id => params[:category])
   end
+  def search_products
+    @categories_active = Category.where("status = 1")
+    @show_by_category = Product.all.where(:category_id => params[:id])
+  end
 
 end

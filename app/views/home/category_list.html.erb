@@ -1,6 +1,19 @@
 <h1>List of all Active Categories</h1>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Search by Category
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <%= content_tag_for(:tr, @categories_active) do |category| %>
+        <li><a><%= link_to category.category_name, home_search_products_path(:id => category.id) %></a></li>
+    <% end %>
+  </ul>
+</div>
+
 <%= content_tag_for(:p, @categories_active) do |category| %>
     <div class="col-sm-6 col-md-3"><br/>
+
       <div class="thumbnail">
         <div class="caption">
           <p class="border_bottom"><b>Category Name:</b> <%= category.category_name %></p>
@@ -17,7 +30,7 @@
           <%= image_tag category.picture, :class => "img-responsive", :class => "image_height" %>
         </div>
         <div class="caption">
-          <p><%= link_to 'Show Products', home_category_products_path(:category => category.id)  , :class => 'btn btn-success' %></p>
+          <p><%= link_to 'Show Products', home_category_products_path(:category => category.id), :class => 'btn btn-success' %></p>
         </div>
       </div>
     </div>

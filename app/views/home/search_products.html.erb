@@ -1,0 +1,37 @@
+<h1>Searched Products</h1>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Search by Category
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <%= content_tag_for(:tr, @categories_active) do |category| %>
+        <li><a><%= link_to category.category_name, home_search_products_path(:id => category.id) %></a></li>
+    <% end %>
+  </ul>
+</div>
+<%= link_to home_category_list_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+<% end %>
+<div class="center">
+  <%= content_tag_for(:tr, @show_by_category) do |p| %>
+      <div class="col-sm-6 col-md-3"><br/>
+
+        <div class="thumbnail">
+          <div class="caption">
+            <p class="border_bottom"><b>Product Name: </b><%= p.product_name %></p>
+
+            <p class="border_bottom"><b>Available Size: </b><%= p.available_size %></p>
+
+            <p class="border_bottom"><b>Price: </b><%= p.price %></p>
+
+            <p class="border_bottom"><b>Category Id: </b><%= p.category.category_name %></p>
+          </div>
+          <div class="product_image_container">
+            <%= image_tag p.picture, :class => "img-responsive", :class => "image_height" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

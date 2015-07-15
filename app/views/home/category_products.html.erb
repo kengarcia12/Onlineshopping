@@ -15,7 +15,7 @@
 
             <p class="border_bottom"><b>Price: </b><%= product.price %></p>
 
-            <p class="border_bottom"><b>Category Id: </b><%= product.category_id %></p>
+            <p class="border_bottom"><b>Category: </b><%= product.category.category_name %></p>
 
             <p class="border_bottom"><%= pluralize(product.votes.count, "vote") %></p>
             <% if @check_id %>
