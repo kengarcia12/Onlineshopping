@@ -4,7 +4,13 @@ class HomeController < ApplicationController
   respond_to :html
 
   def index
-    @products = Product.all
-    @categories = Category.all
+    @display_products = Product.all
   end
+  def category_list
+    @categories_active = Category.where("status = 1")
+  end
+  def category_products
+    @products = Product.all.where(:category_id => params[:category])
+  end
+
 end

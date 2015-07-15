@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'about_us/index'
 
   devise_for :users
   resources :categories
@@ -10,7 +9,6 @@ Rails.application.routes.draw do
       post 'downvote'
     end
   end
-
   devise_for :admins
   root to: 'home#index'
 
@@ -23,7 +21,9 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  get 'about_us/index'
+  get 'home/category_list' => 'home#category_list'
+  get 'home/category_products' => 'home#category_products'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

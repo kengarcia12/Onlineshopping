@@ -1,0 +1,33 @@
+<h1>Products Under a Category</h1>
+<%= link_to home_category_list_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+<% end %>
+<div class="row">
+  <%= content_tag_for(:p, @products) do |product| %>
+      <div class="col-sm-6 col-md-3"><br/>
+
+        <div class="thumbnail">
+          <div class="caption">
+            <p class="border_bottom"><b>Product Name: </b><%= product.product_name %></p>
+
+            <p class="border_bottom"><b>Available Size: </b><%= product.available_size %></p>
+
+            <p class="border_bottom"><b>Price: </b><%= product.price %></p>
+
+            <p class="border_bottom"><b>Category Id: </b><%= product.category_id %></p>
+
+            <p class="border_bottom"><%= pluralize(product.votes.count, "vote") %></p>
+            <% if @check_id %>
+                <p class="border_bottom"><%= button_to 'Dislike', downvote_product_path(product), method: :post %></p>
+            <% else %>
+                <p class="border_bottom"><%= button_to 'Like', upvote_product_path(product), method: :post %></p>
+            <% end %>
+          </div>
+          <div class="product_image_container">
+            <%= image_tag product.picture, :class => "img-responsive", :class => "image_height" %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
