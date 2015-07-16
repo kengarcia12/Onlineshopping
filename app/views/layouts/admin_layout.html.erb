@@ -17,7 +17,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="admin_background">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -61,7 +61,7 @@
           <%= msg %>
       <% end %>
   <% end %>
-
+  <%= image_tag("background.jpg", :class=>"img-responsive", :id=>"full-screen-background-image", :alt => "rss feed") %>
   <%= yield %>
 </div>
 </body>
