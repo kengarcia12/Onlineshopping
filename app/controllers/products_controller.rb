@@ -45,7 +45,6 @@ class ProductsController < ApplicationController
 
   def upvote
     @product = Product.find(params[:id])
-
     if @product.votes.create(user_id: current_user.id)
       flash[:notice] = "Thank you for upvoting!"
       redirect_to(root_path)
@@ -54,7 +53,6 @@ class ProductsController < ApplicationController
       redirect_to(root_path)
     end
   end
-
   def downvote
     @product = Product.find(params[:id])
     @product.votes.last.destroy
@@ -68,7 +66,6 @@ class ProductsController < ApplicationController
       format.js
     end
   end
-
 
   private
   def set_product
