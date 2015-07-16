@@ -47,10 +47,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.votes.create(user_id: current_user.id)
-      flash[:notice] =  "Thank you for upvoting!"
+      flash[:notice] = "Thank you for upvoting!"
       redirect_to(root_path)
     else
-      flash[:notice] =  "You have already upvoted this!"
+      flash[:notice] = "You have already upvoted this!"
       redirect_to(root_path)
     end
   end
@@ -61,13 +61,21 @@ class ProductsController < ApplicationController
     redirect_to(root_path)
   end
 
+  def approve
+    @product_approve = Product.find(params[:id])
+    @product_approve.toggle!(:status)
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    def product_params
-      params.require(:product).permit(:product_name, :available_size, :price, :category_id, :picture)
-    end
+  def product_params
+    params.require(:product).permit(:product_name, :available_size, :price, :category_id, :picture)
+  end
 end

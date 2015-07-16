@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :products do
     member do
+      put :approve
       post 'upvote'
       post 'downvote'
     end

@@ -9,28 +9,6 @@
   <% end %>
   <h1>Show category</h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt>Category name:</dt>
-  <dd><%= @category.category_name %></dd>
-
-  <dt>Description:</dt>
-  <dd><%= @category.description %></dd>
-
-  <dt>Picture:</dt>
-  <dd><%= image_tag @category.picture, :class=> "img-responsive show_set_style" %></dd>
-
-  <dt>Status:</dt>
-  <dd>
-    <% if @category.status == "1" %>
-        <p> <span class="active_style">Active</span></p>
-    <% else %>
-        <p> <span class="inactive_style">Inactive</span></p>
-    <% end  %>
-
-  </dd>
-
-</dl>
 <% @products.each do | product |  %>
     <div class="col-sm-6 col-md-3"><br/>
       <div class="thumbnail">
@@ -38,7 +16,7 @@
           <p class="border_bottom"><b>Product Name: </b><%= product.product_name %></p>
           <p class="border_bottom"><b>Available Size: </b><%= product.available_size %></p>
           <p class="border_bottom"><b>Price: </b><%= product.price %></p>
-          <p class="border_bottom"><b>Category Id: </b><%= product.category_id %></p>
+          <p class="border_bottom"><b>Category Name: </b><%= product.category.category_name %></p>
           <p class="border_bottom"><%= pluralize(product.votes.count, "vote") %></p>
         </div>
         <div class="product_image_container">

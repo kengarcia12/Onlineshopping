@@ -31,6 +31,8 @@
             <p class="border_bottom"><b>Price: </b><%= product.price %></p>
 
             <p class="border_bottom"><b>Category: </b><%= product.category.category_name %></p>
+            <p><%= link_to approve_link_text(product), approve_product_path(product), :remote => true, method: 'PUT', :id => "approve_link_#{product.id}" , :class => 'btn btn-success' %></p>
+
 
           </div>
           <div class="product_image_container">
