@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716180609) do
+ActiveRecord::Schema.define(version: 20150728171346) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20150716180609) do
     t.datetime "updated_at"
   end
 
+  create_table "posts", force: true do |t|
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "available_size"
@@ -50,9 +59,12 @@ ActiveRecord::Schema.define(version: 20150716180609) do
     t.string   "picture"
     t.string   "image"
     t.boolean  "status"
+    t.boolean  "like"
+    t.integer  "user_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -67,6 +79,11 @@ ActiveRecord::Schema.define(version: 20150716180609) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "email_confirmed"
+    t.string   "confirm_token"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -77,8 +94,11 @@ ActiveRecord::Schema.define(version: 20150716180609) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "like_id"
+    t.boolean  "like"
   end
 
+  add_index "votes", ["like_id"], name: "index_votes_on_like_id", using: :btree
   add_index "votes", ["product_id"], name: "index_votes_on_product_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
